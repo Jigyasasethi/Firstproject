@@ -1,6 +1,7 @@
  import React, { Component } from 'react';
 import {
   SafeAreaView,
+  Image,
   StyleSheet,
   ScrollView,
   View,
@@ -9,16 +10,19 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
+  _ScrollView,
 } from 'react-native';
 
 export default class Regform extends Component{
     render(){
         return (
-            
+          <ScrollView>   
         <View  style={styles.container}>
+        
             <Text style={styles.text}>
-                SIGN UP
+               Let's get Started!
             </Text>
+            <Image  style = {{ width: 300, height: 300,  alignSelf: 'center', }} source={require('C:/Users/Jigyasa/test/Images/signupimg.jpg')} />
         <TextInput 
         style={styles.input}
         
@@ -35,7 +39,7 @@ export default class Regform extends Component{
         />
         <TextInput 
         style={styles.input}
-        
+        secureTextEntry={true}
           placeholder='Password'
           autoCapitalize="none"
           placeholderTextColor='white'
@@ -64,6 +68,7 @@ export default class Regform extends Component{
            
         
         </View>
+        </ScrollView>
         );
         }
     }
@@ -78,34 +83,37 @@ export default class Regform extends Component{
      },
      text:{
         color: 'grey',
-        fontSize:18,
-        fontWeight: 'normal',
+        fontSize:38,
+        fontWeight: 'bold',
         textAlign: 'center',
-        borderBottomColor: 'black',
-        borderBottomWidth: 1,
+        color: 'lightsteelblue',
+       /*  borderBottomColor: 'black',
+        borderBottomWidth: 1, */
      },
      input: {
          
-        borderBottomColor: 'black',
-        borderBottomWidth: 1,
+        
         width: 350,
         height: 45,
-       backgroundColor: 'lightgrey',
+       backgroundColor: 'gainsboro',
        
-        marginTop: 40,
+        marginTop: 20,
         padding: 8,
         color: 'grey',
-        borderRadius: 7,
-        fontSize: 18,
-        fontWeight: 'normal',
+        borderRadius: 22,
+        fontSize: 12,
+        fontWeight: '100',
       },
       button: {
-        backgroundColor: 'purple',
+        backgroundColor: 'lightsteelblue',
         borderRadius: 10,
         padding: 14,
         borderRadius: 20,
         marginTop: 60,
        
+        },
+        img:{
+
         },
         txt1:{
             textAlign: 'center',
