@@ -94,7 +94,7 @@ export default class Regform extends Component{
          
         
         width: 350,
-        height: 45,
+        height: 40,
        backgroundColor: 'gainsboro',
        
         marginTop: 20,
@@ -105,11 +105,11 @@ export default class Regform extends Component{
         fontWeight: '100',
       },
       button: {
-        backgroundColor: 'lightsteelblue',
+        backgroundColor: 'mediumslateblue',
         borderRadius: 10,
         padding: 14,
         borderRadius: 20,
-        marginTop: 60,
+        marginTop: 30,
        
         },
         img:{
