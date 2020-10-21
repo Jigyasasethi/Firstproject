@@ -7,32 +7,16 @@
  */
 
 import React, { Component } from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StatusBar,
-} from 'react-native';
+import { View } from 'react-native';
 
+import Regform from './App/Components/regform';
 
-import Regform from "./App/Components/regform"
-
-export default class App extends Component{
-  
-  render(){
-  return (
-    
-       <View> 
-        
-     
-  <Regform/>
-  
-  </View>
-  );
+export default class App extends Component {
+	render() {
+		return (
+			<View>
+				<Regform />
+			</View>
+		);
+	}
 }
-}
-
