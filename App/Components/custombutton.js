@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,12 +9,7 @@ import {
   Button,
   ImagePropTypes,
 } from 'react-native';
-const custombutton =(props)=>{
-    return(
-         <Button title="KHLKKJL"
-        onPress={()=> props.onPress()}
-        /> 
-    );
-
-}
+const custombutton = (props) => {
+  return <Button title="KHLKKJL" onPress={() => props.onPress()} />;
+};
 export default custombutton;
