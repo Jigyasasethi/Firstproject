@@ -8,7 +8,9 @@
 
 import React, {Component} from 'react';
 import {View} from 'react-native';
+
 import Regform from './App/Components/regform';
+
 export default class App extends Component {
   render() {
     return (

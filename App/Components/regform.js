@@ -76,7 +76,7 @@ export default class Regform extends Component {
           <Text style={styles.text}>Let's get Started!</Text>
           <Image
             style={{width: 300, height: 300, alignSelf: 'center'}}
-            source={require('C:/Users/Jigyasa/test/Images/Signupimage.jpg')}
+            source={require('C:/Users/Jigyasa/test/Images/signupimg.jpg')}
           />
           <TextInput
             style={[
