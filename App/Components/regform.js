@@ -1,17 +1,13 @@
 import React, {Component} from 'react';
 import {
-  SafeAreaView,
   Image,
   StyleSheet,
   ScrollView,
   View,
   Text,
-  StatusBar,
   TextInput,
-  Button,
   TouchableOpacity,
 } from 'react-native';
-
 export default class Regform extends Component {
   constructor() {
     super();
