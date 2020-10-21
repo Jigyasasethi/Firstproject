@@ -6,26 +6,33 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
   Text,
+  TextInput,
+  TouchableOpacity,
   StatusBar,
 } from 'react-native';
 
+
 import Regform from "./App/Components/regform"
 
-const App: () => React$Node = () => {
-  return (
-  <Regform/>
-  );
-};
-
-const styles = StyleSheet.create({
+export default class App extends Component{
   
-});
+  render(){
+  return (
+    
+       <View> 
+        
+     
+  <Regform/>
+  
+  </View>
+  );
+}
+}
 
-export default App;

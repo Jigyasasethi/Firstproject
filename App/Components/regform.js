@@ -14,6 +14,87 @@ import {
 } from 'react-native';
 
 export default class Regform extends Component{
+  constructor(){
+    super()
+    this.state={
+      name: '',
+      nameValidate: true,
+      password: '',
+      passwordValidate: true,
+      email: '',
+      emailValidate: true,
+      phone: '',
+      phoneValidate: true,
+
+    }
+  }
+  validate(text, type)
+  {
+   let alph=/^[a-zA-Z]{2,40} [a-zA-Z]{2,40}$/;
+   let num=/^[0-9]/;
+   let reg= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+   let phx= /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+  if(type=='username'){
+    if(alph.test(text)){
+     this.setState({
+       nameValidate: true,
+      
+     })
+    }
+    else
+    {
+      this.setState({
+        nameValidate: false,
+    }) 
+  }
+  } 
+  
+  else if(type=='password'){
+    if(num.test(text)){
+      this.setState({
+        passwordValidate: true,
+       
+      })
+     }
+     else
+     {
+       this.setState({
+         passwordValidate: false,
+     }) 
+   }
+
+  }
+  else if(type=='email'){
+    if(phx.test(text)){
+      this.setState({
+        emailValidate: true,
+       
+      })
+     }
+     else
+     {
+       this.setState({
+        emailValidate: false,
+     }) 
+   }
+
+  }
+  else if(type=='phone'){
+    if(phx.test(text)){
+      this.setState({
+        phoneValidate: true,
+       
+      })
+     }
+     else
+     {
+       this.setState({
+        phoneValidate: false,
+     }) 
+   }
+
+  }
+  }
     render(){
         return (
           <ScrollView>   
@@ -24,36 +105,32 @@ export default class Regform extends Component{
             </Text>
             <Image  style = {{ width: 300, height: 300,  alignSelf: 'center', }} source={require('C:/Users/Jigyasa/test/Images/signupimg.jpg')} />
         <TextInput 
-        style={styles.input}
-        
+        style={[styles.input, !this.state.nameValidate? styles.error:null]}
+        onChangeText={(text)=> this.validate(text, 'username')}
           placeholder='Full Name'
           autoCapitalize="none"
           placeholderTextColor='white'
         />
          <TextInput 
-        style={styles.input}
-        
+        style={[styles.input, !this.state.emailValidate? styles.error:null]}
+        onChangeText={(text)=> this.validate(text, 'email')}
           placeholder='Email'
           autoCapitalize="none"
           placeholderTextColor='white'
         />
         <TextInput 
-        style={styles.input}
+        style={[styles.input, !this.state.passwordValidate? styles.error:null]}
+        onChangeText={(text)=> this.validate(text, 'password')}
         secureTextEntry={true}
           placeholder='Password'
           autoCapitalize="none"
           placeholderTextColor='white'
         />
-         <TextInput 
-        style={styles.input}
         
-          placeholder='Optinal Code'
-          autoCapitalize="none"
-          placeholderTextColor='white'
-        />
         <TextInput 
-        style={styles.input}
-        
+        style={[styles.input,!this.state.phoneValidate? styles.error:null] }
+        onChangeText={(text)=> this.validate(text, 'phone')}
+       keyboardType="numeric"
           placeholder='Phone'
           autoCapitalize="none"
           placeholderTextColor='white'
@@ -119,6 +196,10 @@ export default class Regform extends Component{
             textAlign: 'center',
             color: 'white',
 
+        },
+        error:{
+borderWidth:3,
+borderColor:'red',
         }
         
     
