@@ -90,12 +90,6 @@ export default class Regform extends Component {
       Alert.alert('Username is required!');
     }
   }; */
-  xz() {
-    if (this.state.nameValidate ? true : null) {
-      alert('hey');
-    }
-  }
-
   render() {
     return (
       <ScrollView>
