@@ -7,15 +7,17 @@
  */
 
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {ScrollViewComponent, View} from 'react-native';
 
 import Regform from './App/Components/regform';
+import Loginform from './App/Components/loginform';
 
 export default class App extends Component {
   render() {
     return (
       <View>
         <Regform />
+        <Loginform />
       </View>
     );
   }

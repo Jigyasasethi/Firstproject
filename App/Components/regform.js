@@ -33,7 +33,7 @@ export default class Regform extends Component {
     let reg = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
     let phx = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
     if (type == 'username') {
-      if (alph.test(text)) {
+      if (alph.test(text) && text != '') {
         this.setState({
           nameValidate: true,
         });
@@ -90,6 +90,11 @@ export default class Regform extends Component {
       Alert.alert('Username is required!');
     }
   }; */
+  xz() {
+    if (this.state.nameValidate ? true : null) {
+      alert('hey');
+    }
+  }
 
   render() {
     return (
@@ -104,11 +109,6 @@ export default class Regform extends Component {
             style={[
               styles.input,
               !this.state.nameValidate ? styles.error : null,
-              this.state.ErrorStatus == false ? (
-                <Text style={styles.errorMessage}>
-                  * Please enter the text to proceed.
-                </Text>
-              ) : null,
             ]}
             onChangeText={(text) => this.validate(text, 'username')}
             placeholder="Full Name"
@@ -166,7 +166,7 @@ export default class Regform extends Component {
             placeholderTextColor="white"
           />
 
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={() => this.xz()}>
             <Text style={styles.txt1}>Sign up!</Text>
           </TouchableOpacity>
         </View>
