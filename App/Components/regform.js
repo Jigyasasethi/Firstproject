@@ -33,7 +33,7 @@ export default class Regform extends Component {
     let reg = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
     let phx = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
     if (type == 'username') {
-      if (alph.test(text) && text != '') {
+      if (alph.test(text)) {
         this.setState({
           nameValidate: true,
         });
@@ -77,19 +77,27 @@ export default class Regform extends Component {
   setPasswordVisibility = () => {
     this.setState({hidePassword: !this.state.hidePassword});
   };
-  /*  check = (TextInputValue) => {
-    if (TextInputValue.trim() != 0) {
-      this.setState({TextInputValue: TextInputValue, ErrorStatus: true});
+
+  xz = () => {
+    if (
+      this.state.username != '' &&
+      this.state.password != '' &&
+      this.state.email != '' &&
+      this.state.phone != ''
+    ) {
+      if (
+        this.state.nameValidate == true &&
+        this.state.emailValidate == true &&
+        this.state.passwordValidate == true &&
+        this.state.phoneValidate == true
+      ) {
+        alert('All Okay');
+      }
     } else {
-      this.setState({TextInputValue: TextInputValue, ErrorStatus: false});
+      alert('Please fill all mandatory fields');
     }
   };
-  buttonClickListener = () => {
-    const {TextInputValue} = this.state;
-    if (TextInputValue == '') {
-      Alert.alert('Username is required!');
-    }
-  }; */
+
   render() {
     return (
       <ScrollView>
@@ -160,7 +168,7 @@ export default class Regform extends Component {
             placeholderTextColor="white"
           />
 
-          <TouchableOpacity style={styles.button} onPress={() => this.xz()}>
+          <TouchableOpacity style={styles.button} onPress={this.xz}>
             <Text style={styles.txt1}>Sign up!</Text>
           </TouchableOpacity>
         </View>
