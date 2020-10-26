@@ -98,6 +98,10 @@ export default class Regform extends Component {
         this.state.phoneValidate == true
       ) {
         this.props.navigation.navigate('login');
+        BackAndroid.removeEventListener(
+          'hardwareBackPress',
+          this.handleBackButton,
+        );
       } else {
         alert('Please fill all mandatory fields');
       }

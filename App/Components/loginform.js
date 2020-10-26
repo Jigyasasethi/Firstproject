@@ -35,7 +35,7 @@ export default class loginform extends Component {
             placeholderTextColor="white"
           />
           <TouchableOpacity style={styles.button} onPress={this.xz}>
-            <Text style={styles.txt1}>Sign up!</Text>
+            <Text style={styles.txt1}>Login</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -83,7 +83,6 @@ const styles = StyleSheet.create({
 
     marginTop: 30,
   },
-  img: {},
   txt1: {
     textAlign: 'center',
     color: 'white',

@@ -7,7 +7,6 @@
  */
 import 'react-native-gesture-handler';
 import React, {Component} from 'react';
-import {ScrollViewComponent, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Regform from './App/Components/regform';
