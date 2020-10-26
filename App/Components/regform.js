@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React, {Component} from 'react';
 import {
   Image,
@@ -10,6 +11,7 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
+
 export default class Regform extends Component {
   constructor() {
     super();
@@ -33,6 +35,7 @@ export default class Regform extends Component {
     let reg = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
     let phx = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
     if (type == 'username') {
+      this.setState({username: text});
       if (alph.test(text)) {
         this.setState({
           nameValidate: true,
@@ -43,6 +46,7 @@ export default class Regform extends Component {
         });
       }
     } else if (type == 'password') {
+      this.setState({password: text});
       if (num.test(text)) {
         this.setState({
           passwordValidate: true,
@@ -53,6 +57,7 @@ export default class Regform extends Component {
         });
       }
     } else if (type == 'email') {
+      this.setState({email: text});
       if (reg.test(text)) {
         this.setState({
           emailValidate: true,
@@ -63,6 +68,7 @@ export default class Regform extends Component {
         });
       }
     } else if (type == 'phone') {
+      this.setState({phone: text});
       if (phx.test(text)) {
         this.setState({
           phoneValidate: true,
@@ -81,8 +87,8 @@ export default class Regform extends Component {
   xz = () => {
     if (
       this.state.username != '' &&
-      this.state.password != '' &&
       this.state.email != '' &&
+      this.state.password != '' &&
       this.state.phone != ''
     ) {
       if (
@@ -91,13 +97,12 @@ export default class Regform extends Component {
         this.state.passwordValidate == true &&
         this.state.phoneValidate == true
       ) {
-        alert('All Okay');
+        this.props.navigation.navigate('login');
+      } else {
+        alert('Please fill all mandatory fields');
       }
-    } else {
-      alert('Please fill all mandatory fields');
     }
   };
-
   render() {
     return (
       <ScrollView>

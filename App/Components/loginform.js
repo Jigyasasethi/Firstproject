@@ -13,16 +13,11 @@ export default class loginform extends Component {
     return (
       <ScrollView>
         <View style={styles.container}>
+          <Text style={styles.text1}>Hello</Text>
           <Text style={styles.text}>Thanks for Joining Us!</Text>
           <Image
             style={{width: 300, height: 300, alignSelf: 'center'}}
             source={require('C:/Users/Jigyasa/test/Images/loginimg.jpg')}
-          />
-          <TextInput
-            style={[styles.input]}
-            placeholder="Full Name"
-            autoCapitalize="none"
-            placeholderTextColor="white"
           />
 
           <TextInput
@@ -39,6 +34,9 @@ export default class loginform extends Component {
             autoCapitalize="none"
             placeholderTextColor="white"
           />
+          <TouchableOpacity style={styles.button} onPress={this.xz}>
+            <Text style={styles.txt1}>Sign up!</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     );
@@ -54,10 +52,16 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'grey',
-    fontSize: 33,
+    fontSize: 20,
     fontWeight: 'bold',
-    textAlign: 'center',
+    textAlign: 'left',
     color: 'lightsteelblue',
+  },
+  text1: {
+    fontSize: 60,
+    fontWeight: 'bold',
+    textAlign: 'left',
+    color: 'cornflowerblue',
   },
   input: {
     width: 350,
@@ -73,10 +77,10 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    backgroundColor: 'mediumslateblue',
-    borderRadius: 10,
-    padding: 14,
+    backgroundColor: 'cornflowerblue',
     borderRadius: 20,
+    padding: 10,
+
     marginTop: 30,
   },
   img: {},
