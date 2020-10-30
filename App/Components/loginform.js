@@ -6,9 +6,57 @@ import {
   View,
   Text,
   TextInput,
+  BackHandler,
   TouchableOpacity,
+  AsyncStorage,
+  Alert,
 } from 'react-native';
+
 export default class loginform extends Component {
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      password: '',
+      setValue: '',
+      getsetValue: '',
+    };
+  }
+  _retrieveData = async () => {
+    const value = await AsyncStorage.getItem('email');
+    const value1 = await AsyncStorage.getItem('password');
+
+    if (value !== null && value1 !== null) {
+      if (value == this.state.email && value1 == this.state.password) {
+        console.log(value);
+        alert('hey' + value); // We have data!!
+      } else {
+        alert('Please Sign up first!');
+      }
+    }
+  };
+  backAction = () => {
+    Alert.alert('Hold on!', 'Are you sure you want to go back?', [
+      {
+        text: 'Cancel',
+        onPress: () => null,
+        style: 'cancel',
+      },
+      {text: 'YES', onPress: () => BackHandler.exitApp()},
+    ]);
+    return true;
+  };
+  componentDidMount() {
+    this.backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      this.backAction,
+    );
+  }
+
+  componentWillUnmount() {
+    this.backHandler.remove();
+  }
+
   render() {
     return (
       <ScrollView>
@@ -23,6 +71,8 @@ export default class loginform extends Component {
           <TextInput
             style={[styles.input]}
             placeholder="Email"
+            onChangeText={(email) => this.setState({email})}
+            value={this.state.email}
             autoCapitalize="none"
             placeholderTextColor="white"
           />
@@ -31,10 +81,12 @@ export default class loginform extends Component {
             style={[styles.input, styles.textboxbtnholder]}
             secureTextEntry={true}
             placeholder="Password"
+            onChangeText={(password) => this.setState({password})}
+            value={this.state.password}
             autoCapitalize="none"
             placeholderTextColor="white"
           />
-          <TouchableOpacity style={styles.button} onPress={this.xz}>
+          <TouchableOpacity style={styles.button} onPress={this._retrieveData}>
             <Text style={styles.txt1}>Login</Text>
           </TouchableOpacity>
         </View>
@@ -42,10 +94,11 @@ export default class loginform extends Component {
     );
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    marginTop: 50,
+    marginTop: 20,
     padding: 20,
     backgroundColor: '#ffffff',
     flex: 1,

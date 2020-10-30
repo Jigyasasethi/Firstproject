@@ -7,11 +7,11 @@ import {
   View,
   Text,
   TextInput,
-  Alert,
-  Button,
   TouchableOpacity,
+  AsyncStorage,
+  BackHandler,
+  Alert,
 } from 'react-native';
-
 export default class Regform extends Component {
   constructor() {
     super();
@@ -83,8 +83,12 @@ export default class Regform extends Component {
   setPasswordVisibility = () => {
     this.setState({hidePassword: !this.state.hidePassword});
   };
+  /* _storeData = async () => {
+    await AsyncStorage.setItem('Mykey', 'I like to save it.');
+    this.props.navigation.navigate('login');
+  }; */
 
-  xz = () => {
+  _storeData = async () => {
     if (
       this.state.username != '' &&
       this.state.email != '' &&
@@ -97,16 +101,15 @@ export default class Regform extends Component {
         this.state.passwordValidate == true &&
         this.state.phoneValidate == true
       ) {
+        await AsyncStorage.setItem('email', this.state.email);
+        await AsyncStorage.setItem('password', this.state.password);
         this.props.navigation.navigate('login');
-        BackAndroid.removeEventListener(
-          'hardwareBackPress',
-          this.handleBackButton,
-        );
-      } else {
-        alert('Please fill all mandatory fields');
       }
+    } else {
+      alert('Please fill all mandatory fields');
     }
   };
+
   render() {
     return (
       <ScrollView>
@@ -177,7 +180,7 @@ export default class Regform extends Component {
             placeholderTextColor="white"
           />
 
-          <TouchableOpacity style={styles.button} onPress={this.xz}>
+          <TouchableOpacity style={styles.button} onPress={this._storeData}>
             <Text style={styles.txt1}>Sign up!</Text>
           </TouchableOpacity>
         </View>
@@ -189,7 +192,7 @@ export default class Regform extends Component {
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    marginTop: 50,
+    marginTop: 20,
     padding: 20,
     backgroundColor: '#ffffff',
     flex: 1,
