@@ -106,7 +106,7 @@ export default class Regform extends Component {
         this.props.navigation.navigate('login');
       }
     } else {
-      alert('Please fill all mandatory fields');
+      alert('Please check all the fields are mandatory and must be valid!');
     }
   };
 
@@ -129,7 +129,6 @@ export default class Regform extends Component {
             autoCapitalize="none"
             placeholderTextColor="white"
           />
-
           <TextInput
             style={[
               styles.input,

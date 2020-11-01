@@ -18,9 +18,37 @@ export default class loginform extends Component {
     this.state = {
       email: '',
       password: '',
-      setValue: '',
-      getsetValue: '',
+      emailValidate: true,
+      passwordValidate: true,
     };
+  }
+  validate(text, type) {
+    let num = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+    let reg = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+
+    if (type == 'password') {
+      this.setState({password: text});
+      if (num.test(text)) {
+        this.setState({
+          passwordValidate: true,
+        });
+      } else {
+        this.setState({
+          passwordValidate: false,
+        });
+      }
+    } else if (type == 'email') {
+      this.setState({email: text});
+      if (reg.test(text)) {
+        this.setState({
+          emailValidate: true,
+        });
+      } else {
+        this.setState({
+          emailValidate: false,
+        });
+      }
+    }
   }
   _retrieveData = async () => {
     const value = await AsyncStorage.getItem('email');
@@ -30,6 +58,7 @@ export default class loginform extends Component {
       if (value == this.state.email && value1 == this.state.password) {
         console.log(value);
         alert('hey' + value); // We have data!!
+        this.props.navigation.navigate('myprofile');
       } else {
         alert('Please Sign up first!');
       }
@@ -69,19 +98,26 @@ export default class loginform extends Component {
           />
 
           <TextInput
-            style={[styles.input]}
+            style={[
+              styles.input,
+              !this.state.emailValidate ? styles.error : null,
+            ]}
             placeholder="Email"
-            onChangeText={(email) => this.setState({email})}
+            onChangeText={(text) => this.validate(text, 'email')}
             value={this.state.email}
             autoCapitalize="none"
             placeholderTextColor="white"
           />
 
           <TextInput
-            style={[styles.input, styles.textboxbtnholder]}
+            style={[
+              styles.input,
+              styles.textboxbtnholder,
+              !this.state.passwordValidate ? styles.error : null,
+            ]}
             secureTextEntry={true}
             placeholder="Password"
-            onChangeText={(password) => this.setState({password})}
+            onChangeText={(text) => this.validate(text, 'password')}
             value={this.state.password}
             autoCapitalize="none"
             placeholderTextColor="white"
@@ -161,5 +197,9 @@ const styles = StyleSheet.create({
     position: 'relative',
     alignSelf: 'stretch',
     justifyContent: 'center',
+  },
+  error: {
+    borderWidth: 3,
+    borderColor: 'red',
   },
 });
