@@ -11,6 +11,7 @@ import {
   AsyncStorage,
   Alert,
 } from 'react-native';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 export default class loginform extends Component {
   constructor() {
@@ -60,7 +61,9 @@ export default class loginform extends Component {
         alert('hey' + value); // We have data!!
         this.props.navigation.navigate('myprofile');
       } else {
-        alert('Please Sign up first!');
+        alert(
+          'Error fetching Data. PLease Singup first if you have not already signed in!',
+        );
       }
     }
   };

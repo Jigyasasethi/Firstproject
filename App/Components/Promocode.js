@@ -1,12 +1,18 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
+import {View, TouchableOpacity} from 'react-native';
+import {DrawerActions} from '@react-navigation/native';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 export default class Promocode extends Component {
   render() {
     return (
-      <View>
-        <TextInput> Hello to Promocode</TextInput>
-      </View>
+      <TouchableOpacity>
+        <FontAwesome5
+          name="bars"
+          size={28}
+          onPress={() =>
+            this.props.navigation.dispatch(DrawerActions.openDrawer())
+          }></FontAwesome5>
+      </TouchableOpacity>
     );
   }
 }

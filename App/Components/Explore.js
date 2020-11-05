@@ -5,10 +5,10 @@ import {View, Text, StyleSheet} from 'react-native';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import {DrawerActions} from '@react-navigation/native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-export default class Myprofile extends Component {
+export default class Explore extends Component {
   render() {
     return (
-      <View style={styles.myprofile}>
+      <View style={styles.rewards}>
         <TouchableOpacity>
           <FontAwesome5
             name="bars"
@@ -16,14 +16,14 @@ export default class Myprofile extends Component {
             onPress={() =>
               this.props.navigation.dispatch(DrawerActions.openDrawer())
             }></FontAwesome5>
-          <Text>Hello to Myprofile</Text>
+          <Text>Hello to Explore!</Text>
         </TouchableOpacity>
       </View>
     );
   }
 }
 const styles = StyleSheet.create({
-  myprofile: {
+  rewards: {
     marginTop: 12,
     marginLeft: 8,
   },
