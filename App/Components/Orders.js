@@ -1,30 +1,33 @@
 import React, {Component} from 'react';
-import CustomHeader from '../Components/Shared/CustomHeader';
 
-import {View, Text, StyleSheet} from 'react-native';
-import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
-import {DrawerActions} from '@react-navigation/native';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {createStackNavigator} from '@react-navigation/stack';
+import productlistscreen from './Containers/productlistscreen';
+import item1screen from './Containers/item1screen';
+import item2screen from './Containers/item2screen';
+import ShopppingcartIcon from './Containers/ShoppingcartIcon';
+import CartScreen from './Containers/CartScreen';
+const Stack = createStackNavigator();
 export default class Orders extends Component {
   render() {
     return (
-      <View style={styles.orders}>
-        <TouchableOpacity>
-          <FontAwesome5
-            name="bars"
-            size={28}
-            onPress={() =>
-              this.props.navigation.dispatch(DrawerActions.openDrawer())
-            }></FontAwesome5>
-          <Text>Hello to Orders!</Text>
-        </TouchableOpacity>
-      </View>
+      <Stack.Navigator
+        screenOptions={{
+          headerTitle: 'ShoppingApp',
+          headerRight: (props) => (
+            <ShopppingcartIcon
+              {...props}
+              onPress={() =>
+                this.props.navigation.navigate('Cart')
+              }></ShopppingcartIcon>
+          ),
+        }}
+        initialRouteName="productlist">
+        <Stack.Screen name="productlist" component={productlistscreen} />
+
+        <Stack.Screen name="item1" component={item1screen}></Stack.Screen>
+        <Stack.Screen name="item2" component={item2screen} />
+        <Stack.Screen name="Cart" component={CartScreen} />
+      </Stack.Navigator>
     );
   }
 }
-const styles = StyleSheet.create({
-  orders: {
-    marginTop: 12,
-    marginLeft: 8,
-  },
-});
