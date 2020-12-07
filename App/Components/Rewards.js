@@ -16,7 +16,7 @@ class Rewards extends Component {
   render() {
     return (
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
-        <View style={styles.container1}>
+        <View style={styles.container}>
           <Text style={styles.hellotext}>Hello, {this.props.username}</Text>
           <Text style={styles.freetext}>
             Your free food is just on your way
