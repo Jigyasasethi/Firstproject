@@ -12,7 +12,7 @@ export const _addLoginCredentials = (values) => {
   store.dispatch({
     type: 'ADD_LOGIN_CREDENTIALS',
     email: values.email,
-    pass: values.pass,
+    pass: values.pass.f,
   });
 };
 export const _addUsername = (values) => {
