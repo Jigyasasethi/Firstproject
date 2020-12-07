@@ -11,9 +11,10 @@ import {
   AsyncStorage,
   Alert,
 } from 'react-native';
+import {connect} from 'react-redux';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-export default class loginform extends Component {
+class loginform extends Component {
   constructor() {
     super();
     this.state = {
@@ -51,19 +52,18 @@ export default class loginform extends Component {
       }
     }
   }
-  _retrieveData = async () => {
-    const value = await AsyncStorage.getItem('email');
-    const value1 = await AsyncStorage.getItem('password');
-
-    if (value !== null && value1 !== null) {
-      if (value == this.state.email && value1 == this.state.password) {
-        console.log(value);
-        alert('hey' + value); // We have data!!
+  _retrieveData = () => {
+    if (this.state.email == '' || this.state.password == '') {
+      alert('Please Enter All the Values.');
+    } else if (this.state.email != '' && this.state.pass != '') {
+      if (
+        this.props.email == this.state.email &&
+        this.props.pass == this.state.password
+      ) {
+        alert('All Okay!');
         this.props.navigation.navigate('myprofile');
       } else {
-        alert(
-          'Error fetching Data. PLease Singup first if you have not already signed in!',
-        );
+        alert('Email or Password is incorrect!');
       }
     }
   };
@@ -90,6 +90,7 @@ export default class loginform extends Component {
   }
 
   render() {
+    /*  console.warn(this.props.email, this.props.pass); */
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -133,6 +134,25 @@ export default class loginform extends Component {
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    email: state.userred.email,
+    pass: state.userred.password,
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    verifyUserDetails: (email, password) =>
+      dispatch({
+        type: 'ADD_LOGIN_CREDENTIALS',
+        payload: {
+          email: email,
+          password: password,
+        },
+      }),
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(loginform);
 
 const styles = StyleSheet.create({
   container: {

@@ -48,7 +48,7 @@ export default class Welcomescreen extends Component {
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    marginTop: 30,
+    marginTop: 18,
     padding: 20,
     backgroundColor: '#ffffff',
     flex: 1,

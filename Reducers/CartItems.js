@@ -1,3 +1,6 @@
+import React from 'react';
+import {combineReducers} from 'redux';
+
 const cartItems = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TO_CART':
@@ -8,27 +11,32 @@ const cartItems = (state = [], action) => {
 
   return state;
 };
-const user = (state = [], action) => {
+const userreducer = (
+  state = {username: '', password: '', email: '', phone: ''},
+  action,
+) => {
   switch (action.type) {
     case 'ADD_USER_DETAIL':
       return {
-        firstname: action.firstname,
-        lastname: action.lastname,
-        address: action.address,
-        city: action.city,
-        State: action.State,
-        country: action.country,
+        username: action.payload.username,
+        password: action.payload.password,
+        email: action.payload.email,
+        phone: action.payload.phone,
       };
 
     case 'ADD_LOGIN_CREDENTIALS':
       return {
         ...state,
-        email: action.email,
-        pass: action.pass,
+        email: action.payload.email,
+        password: action.payload.password,
       };
     default:
       return state;
   }
 };
 
-export default cartItems;
+const reducers = combineReducers({
+  cartItems: cartItems,
+  userred: userreducer,
+});
+export default reducers;

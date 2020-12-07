@@ -62,13 +62,13 @@ function MyTabs() {
     <Tab.Navigator
       initialRouteName="Rewards"
       activeColor="#fff"
-      tabBarColor="#009387">
+      tabBarColor="steelblue">
       <Tab.Screen
         name="Rewards"
         component={Rewards}
         options={{
           tabBarLabel: 'rewards',
-          tabBarColor: '#009387',
+          tabBarColor: 'steelblue',
           tabBarIcon: ({color}) => (
             <FontAwesome5 name="trophy" color={color} size={20} />
           ),
@@ -80,7 +80,7 @@ function MyTabs() {
         component={Explore}
         options={{
           tabBarLabel: 'explore',
-          tabBarColor: '#009387',
+          tabBarColor: 'steelblue',
           tabBarIcon: ({color}) => (
             <FontAwesome5 name="list-ul" color={color} size={20} />
           ),
@@ -91,7 +91,7 @@ function MyTabs() {
         component={Orders}
         options={{
           tabBarLabel: 'Orders',
-          tabBarColor: '#009387',
+          tabBarColor: 'steelblue',
           tabBarIcon: ({color}) => (
             <FontAwesome5 name="hamburger" color={color} size={20} />
           ),
@@ -102,7 +102,7 @@ function MyTabs() {
         component={Stores}
         options={{
           tabBarLabel: 'stores',
-          tabBarColor: '#009387',
+          tabBarColor: 'steelblue',
           tabBarIcon: ({color}) => (
             <FontAwesome5 name="search-location" color={color} size={20} />
           ),

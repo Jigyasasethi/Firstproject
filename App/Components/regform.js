@@ -8,11 +8,10 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  AsyncStorage,
-  BackHandler,
-  Alert,
 } from 'react-native';
-export default class Regform extends Component {
+import {connect} from 'react-redux';
+
+class Regform extends Component {
   constructor() {
     super();
     this.state = {
@@ -88,29 +87,32 @@ export default class Regform extends Component {
     this.props.navigation.navigate('login');
   }; */
 
-  _storeData = async () => {
+  _storeData = () => {
     if (
-      this.state.username != '' &&
       this.state.email != '' &&
       this.state.password != '' &&
+      this.state.username != '' &&
       this.state.phone != ''
     ) {
-      if (
-        this.state.nameValidate == true &&
-        this.state.emailValidate == true &&
-        this.state.passwordValidate == true &&
-        this.state.phoneValidate == true
-      ) {
-        await AsyncStorage.setItem('email', this.state.email);
-        await AsyncStorage.setItem('password', this.state.password);
-        this.props.navigation.navigate('login');
-      }
+      this.props.addUserDetails(
+        this.state.username,
+        this.state.email,
+        this.state.password,
+        this.state.phone,
+      );
+      alert('User Added!');
     } else {
-      alert('Please check all the fields are mandatory and must be valid!');
+      alert('Please Enter all the details!');
     }
   };
 
   render() {
+    console.warn(
+      this.props.user,
+      this.props.email,
+      this.props.password,
+      this.props.phone,
+    );
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -187,6 +189,30 @@ export default class Regform extends Component {
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    user: state.userred.username,
+    email: state.userred.email,
+    password: state.userred.password,
+    phone: state.userred.phone,
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    addUserDetails: (username, email, password, phone) =>
+      dispatch({
+        type: 'ADD_USER_DETAIL',
+        payload: {
+          username: username,
+          email: email,
+          password: password,
+
+          phone: phone,
+        },
+      }),
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Regform);
 
 const styles = StyleSheet.create({
   container: {

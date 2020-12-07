@@ -33,7 +33,7 @@ const ShoppingcartIcon = (props) => (
 
 const mapStateToProps = (State) => {
   return {
-    cartItems: State,
+    cartItems: State.cartItems,
   };
 };
 export default connect(mapStateToProps)(ShoppingcartIcon);

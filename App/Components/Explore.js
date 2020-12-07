@@ -16,7 +16,7 @@ export default class Explore extends Component {
             onPress={() =>
               this.props.navigation.dispatch(DrawerActions.openDrawer())
             }></FontAwesome5>
-          <Text>Hello to Explore!</Text>
+          <Text style={styles.exploretext}>Hello to Explore!</Text>
         </TouchableOpacity>
       </View>
     );
@@ -26,5 +26,8 @@ const styles = StyleSheet.create({
   rewards: {
     marginTop: 12,
     marginLeft: 8,
+  },
+  exploretext: {
+    fontFamily: 'Playfair_Display',
   },
 });
