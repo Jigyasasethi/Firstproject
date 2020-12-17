@@ -1,7 +1,14 @@
 import 'react-native-gesture-handler';
 import React, {Component} from 'react';
 
-import {Image, StyleSheet, ScrollView, View, Text} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 
 export default class Welcomescreen extends Component {
   render() {
