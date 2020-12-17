@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "2842702065",
+    "firebase_url": "https://reactnative-database-8baca-default-rtdb.firebaseio.com",
+    "project_id": "reactnative-database-8baca",
+    "storage_bucket": "reactnative-database-8baca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2842702065:android:12e0502aa80f0ab101b950",
+        "android_client_info": {
+          "package_name": "com.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2842702065-bcrs7pclkpn7rhslrth7rokcl6kma8ki.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM7Tny7Ujq3isi18djPmEtmT2X8UrodmI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2842702065-bcrs7pclkpn7rhslrth7rokcl6kma8ki.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -8,13 +8,43 @@ import {
   TextInput,
   BackHandler,
   TouchableOpacity,
-  AsyncStorage,
   Alert,
 } from 'react-native';
 import {connect} from 'react-redux';
+import firebase from 'firebase';
+
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 class loginform extends Component {
+  componentWillMount() {
+    var firebaseConfig = {
+      apiKey: 'AIzaSyBLquEQM_nWBaev_MT4dNAcC00NwLzcX1U',
+      authDomain: 'reactnative-database-8baca.firebaseapp.com',
+      projectId: 'reactnative-database-8baca',
+      storageBucket: 'reactnative-database-8baca.appspot.com',
+      messagingSenderId: '2842702065',
+      appId: '1:2842702065:web:bd206de7de518eca01b950',
+      measurementId: 'G-54QNE5XE3W',
+    };
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    } else {
+      firebase.app(); // if already initialized, use that one
+    }
+    console.log(firebase);
+    firebase
+      .database()
+      .ref('users/004')
+      .set({
+        email: this.props.email,
+      })
+      .then(() => {
+        console.log('INSERTED !');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   constructor() {
     super();
     this.state = {

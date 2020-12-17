@@ -27,12 +27,23 @@ export default class productlistscreen extends Component {
       <View>
         <FlatList
           data={[
-            {index: 0, key: 'Meal Deals'},
-            {index: 1, key: 'Sandwiches'},
+            {index: 0, key: 'MEAL DEALS'},
+            {index: 1, key: 'SANDWICHES'},
+            {index: 1, key: 'SANDWICHES'},
+            {index: 1, key: 'SANDWICHES'},
           ]}
           renderItem={({item, index}) => (
             <Text
-              style={styles.item}
+              style={{
+                padding: 10,
+                fontSize: 16,
+                height: 138,
+                textAlign: 'center',
+                fontFamily: 'SF-UI-Display-Regular',
+                textAlignVertical: 'center',
+                backgroundColor:
+                  index % 2 == 0 ? '#f2f2f2' : 'lightgoldenrodyellow',
+              }}
               onPress={() => this.goToNextScreen(index)}>
               {item.key}
             </Text>
@@ -52,9 +63,13 @@ export default class productlistscreen extends Component {
   }
 }
 const styles = StyleSheet.create({
-  item: {
+  /*  item: {
     padding: 10,
-    fontSize: 18,
-    height: 44,
-  },
+    fontSize: 16,
+    height: 138,
+    textAlign: 'center',
+    fontFamily: 'SF-UI-Display-Regular',
+    textAlignVertical: 'center',
+    backgroundColor: index % 2 == 0 ? '#f2f2f2' : '#FFFFFF',
+  }, */
 });
