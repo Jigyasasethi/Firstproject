@@ -28,10 +28,10 @@ class Regform extends Component {
     };
   }
   validate(text, type) {
-    let alph = /^[a-zA-Z]{2,40} [a-zA-Z]{2,40}$/;
-    let num = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
-    let reg = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-    let phx = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+    let alph = /^[a-zA-Z]{2,40} [a-zA-Z]{2,40}$/; // username regex
+    let num = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/; //password regex
+    let reg = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/; // email regex
+    let phx = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/; // phone regex
     if (type == 'username') {
       this.setState({username: text});
       if (alph.test(text)) {
@@ -79,20 +79,25 @@ class Regform extends Component {
     }
   }
   setPasswordVisibility = () => {
-    this.setState({hidePassword: !this.state.hidePassword});
+    this.setState({hidePassword: !this.state.hidePassword}); //password visibility
   };
-  /* _storeData = async () => {
-    await AsyncStorage.setItem('Mykey', 'I like to save it.');
-    this.props.navigation.navigate('login');
-  }; */
 
   _storeData = () => {
     if (
-      this.state.email != '' &&
-      this.state.password != '' &&
-      this.state.username != '' &&
-      this.state.phone != ''
+      this.state.email == '' ||
+      this.state.password == '' ||
+      this.state.username == '' ||
+      this.state.phone == ''
     ) {
+      alert('Please Enter all the details!');
+    } else if (
+      this.state.nameValidate == false ||
+      this.state.emailValidate == false ||
+      this.state.passwordValidate == false ||
+      this.state.phoneValidate == false
+    ) {
+      alert('Check Validations!');
+    } else {
       this.props.addUserDetails(
         this.state.username,
         this.state.email,
@@ -100,8 +105,6 @@ class Regform extends Component {
         this.state.phone,
       );
       alert('User Added!');
-    } else {
-      alert('Please Enter all the details!');
     }
   };
 
@@ -110,7 +113,7 @@ class Regform extends Component {
       this.props.user,
       this.props.email,
       this.props.password,
-      this.props.phone,
+      this.props.phone, // To keep track of data stored
     );
     return (
       <ScrollView>
@@ -205,14 +208,12 @@ function mapDispatchToProps(dispatch) {
           username: username,
           email: email,
           password: password,
-
           phone: phone,
         },
       }),
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Regform);
-
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
@@ -227,8 +228,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: 'lightsteelblue',
-    /*  borderBottomColor: 'black',
-        borderBottomWidth: 1, */
   },
   input: {
     width: 350,
@@ -242,7 +241,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '100',
   },
-
   button: {
     backgroundColor: 'mediumslateblue',
     borderRadius: 10,
@@ -250,7 +248,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginTop: 30,
   },
-  img: {},
   txt1: {
     textAlign: 'center',
     color: 'white',
@@ -259,7 +256,6 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: 'red',
   },
-
   touachableButton: {
     position: 'absolute',
     right: 3,
