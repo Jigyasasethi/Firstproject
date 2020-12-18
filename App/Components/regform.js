@@ -105,6 +105,7 @@ class Regform extends Component {
         this.state.phone,
       );
       alert('User Added!');
+      this.props.navigation.navigate('myprofile');
     }
   };
 

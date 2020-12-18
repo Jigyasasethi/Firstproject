@@ -12,13 +12,7 @@ export default class productlistscreen extends Component {
       />
     );
   };
-  goToNextScreen = (index) => {
-    if (index == 0) {
-      this.props.navigation.navigate('item1');
-    } else {
-      this.props.navigation.navigate('item2');
-    }
-  };
+
   render() {
     return (
       <View>
@@ -66,8 +60,8 @@ export default class productlistscreen extends Component {
                   fontFamily: 'SF-UI-Display-Regular',
                   textAlignVertical: 'center',
                   backgroundColor: index % 2 == 0 ? '#f2f2f2' : 'lavender',
-                }}
-                onPress={() => this.goToNextScreen(index)}>
+                }}>
+                onPress={() => this.props.navigation.navigate('maps')}
                 {item.key}
               </Text>
               <Image style={styles.img} source={item.image} />

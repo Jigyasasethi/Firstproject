@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
-import CustomHeader from '../Components/Shared/CustomHeader';
 import addresslist from './addresslist';
 import CartScreen from './Containers/CartScreen';
 import ShopppingcartIcon from './Containers/ShoppingcartIcon';
-
 import {createStackNavigator} from '@react-navigation/stack';
-
-import {View, StyleSheet, FlatList, Header} from 'react-native';
+import {StyleSheet} from 'react-native';
 const Stack = createStackNavigator();
-
 export default class productlistscreen extends Component {
   render() {
     return (
@@ -29,7 +25,6 @@ export default class productlistscreen extends Component {
         }}
         initialRouteName="productlist">
         <Stack.Screen name="addresslist" component={addresslist} />
-
         <Stack.Screen name="Cart" component={CartScreen} />
       </Stack.Navigator>
     );

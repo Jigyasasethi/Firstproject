@@ -14,7 +14,7 @@ import {connect} from 'react-redux';
 import firebase from 'firebase';
 
 class loginform extends Component {
-  componentWillMount() {
+  componentDidMount() {
     var firebaseConfig = {
       apiKey: 'AIzaSyBLquEQM_nWBaev_MT4dNAcC00NwLzcX1U',
       authDomain: 'reactnative-database-8baca.firebaseapp.com',
@@ -25,6 +25,7 @@ class loginform extends Component {
       measurementId: 'G-54QNE5XE3W',
     };
     if (!firebase.apps.length) {
+      // data sent to firebase realtime database after logging In
       firebase.initializeApp(firebaseConfig);
     } else {
       firebase.app(); // if already initialized, use that one
@@ -86,7 +87,7 @@ class loginform extends Component {
     } else if (this.state.email != '' && this.state.pass != '') {
       if (
         this.props.email == this.state.email &&
-        this.props.pass == this.state.password
+        this.props.pass == this.state.password // mapped props from signup same as state
       ) {
         alert('All Okay!');
         this.props.navigation.navigate('myprofile');
@@ -118,7 +119,6 @@ class loginform extends Component {
   }
 
   render() {
-    /*  console.warn(this.props.email, this.props.pass); */
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -168,7 +168,7 @@ function mapStateToProps(state) {
     pass: state.userred.password,
   };
 }
-function mapDispatchToProps(dispatch) {
+/* function mapDispatchToProps(dispatch) {
   return {
     verifyUserDetails: (email, password) =>
       dispatch({
@@ -179,8 +179,8 @@ function mapDispatchToProps(dispatch) {
         },
       }),
   };
-}
-export default connect(mapStateToProps, mapDispatchToProps)(loginform);
+} */
+export default connect(mapStateToProps)(loginform);
 
 const styles = StyleSheet.create({
   container: {

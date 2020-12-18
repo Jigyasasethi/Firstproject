@@ -58,22 +58,13 @@ class Rewards extends Component {
   }
 }
 function mapStateToProps(state) {
+  // username mapped
   return {
     username: state.userred.username,
   };
 }
-function mapDispatchToProps(dispatch) {
-  return {
-    addUsername: (username) =>
-      dispatch({
-        type: 'ADD_USER_DETAIL',
-        payload: {
-          username: username,
-        },
-      }),
-  };
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Rewards);
+
+export default connect(mapStateToProps)(Rewards);
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ffffff',

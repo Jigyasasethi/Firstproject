@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 import {createStackNavigator} from '@react-navigation/stack';
 import productlistscreen from './Containers/productlistscreen';
 import item1screen from './Containers/item1screen';
@@ -27,8 +26,7 @@ export default class Orders extends Component {
         }}
         initialRouteName="productlist">
         <Stack.Screen name="productlist" component={productlistscreen} />
-
-        <Stack.Screen name="item1" component={item1screen}></Stack.Screen>
+        <Stack.Screen name="item1" component={item1screen} />
         <Stack.Screen name="item2" component={item2screen} />
         <Stack.Screen name="Cart" component={CartScreen} />
       </Stack.Navigator>

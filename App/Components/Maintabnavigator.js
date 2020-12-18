@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-
 import Aboutus from './Aboutus';
 import Promocode from './Promocode';
 import Accounthistory from './Accounthistory';
@@ -24,13 +23,7 @@ const Tab = createMaterialBottomTabNavigator();
 function MainStackNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        /*  options={{
-          drawerIcon: ({focused, size}) => (
-            <FontAwesome5 name="bars" style={25} />
-          ),
-        }} */
-        initialRouteName="Welcome">
+      <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen name="Register" component={Regform} />
 
         <Stack.Screen name="login" component={loginform}></Stack.Screen>

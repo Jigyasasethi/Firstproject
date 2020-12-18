@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import CustomHeader from '../Components/Shared/CustomHeader';
-
 import {View, Text, StyleSheet} from 'react-native';
-import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import {DrawerActions} from '@react-navigation/native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 export default class Explore extends Component {
