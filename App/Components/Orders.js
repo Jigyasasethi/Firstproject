@@ -13,6 +13,10 @@ export default class Orders extends Component {
       <Stack.Navigator
         screenOptions={{
           headerTitle: 'ShoppingApp',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: 'steelblue',
+          },
           headerRight: (props) => (
             <ShopppingcartIcon
               {...props}

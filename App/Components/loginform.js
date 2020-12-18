@@ -13,8 +13,6 @@ import {
 import {connect} from 'react-redux';
 import firebase from 'firebase';
 
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-
 class loginform extends Component {
   componentWillMount() {
     var firebaseConfig = {

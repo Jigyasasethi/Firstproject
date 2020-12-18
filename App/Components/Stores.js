@@ -1,63 +1,54 @@
 import React, {Component} from 'react';
 import CustomHeader from '../Components/Shared/CustomHeader';
+import addresslist from './addresslist';
+import CartScreen from './Containers/CartScreen';
+import ShopppingcartIcon from './Containers/ShoppingcartIcon';
 
-import {View, Text, StyleSheet} from 'react-native';
-import {TextInput, TouchableOpacity, FlatList} from 'react-native';
-import {DrawerActions} from '@react-navigation/native';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {RadioButton, RadioGroup} from 'react-native-paper';
-export default class Stores extends Component {
-  _renderItem = ({item}) => (
-    <View style={styles.listItem}>
-      <RadioGroup>
-        <RadioButton value={'item1'}>
-          <Text>{item.key1}</Text>
-        </RadioButton>
+import {createStackNavigator} from '@react-navigation/stack';
 
-        <RadioButton value={'item2'}>
-          <Text>{item.key2}</Text>
-        </RadioButton>
+import {View, StyleSheet, FlatList, Header} from 'react-native';
+const Stack = createStackNavigator();
 
-        <RadioButton value={'item3'}>
-          <Text>{item.key3}</Text>
-        </RadioButton>
-      </RadioGroup>
-    </View>
-  );
-
+export default class productlistscreen extends Component {
   render() {
     return (
-      <View style={styles.stores}>
-        <TouchableOpacity>
-          <FontAwesome5
-            name="bars"
-            size={28}
-            onPress={() =>
-              this.props.navigation.dispatch(DrawerActions.openDrawer())
-            }></FontAwesome5>
-          <Text>Hello to Stores!</Text>
-        </TouchableOpacity>
-        <FlatList
-          data={[
-            {key1: 'Devin', key2: 'Jackson', key3: 'James'},
-            {key1: 'Joel', key2: 'Jimmy', key3: 'Jillian'},
-            {key1: 'Jillian', key2: 'Jackson', key3: 'James'},
-            {key1: 'Devin', key2: 'Joel', key3: 'Jimmy'},
-            {key1: 'Julie', key2: 'Jackson', key3: 'James'},
-          ]}
-          renderItem={this._renderItem}
-        />
-      </View>
+      <Stack.Navigator
+        screenOptions={{
+          headerTitle: 'Locate Us',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: 'steelblue',
+          },
+          headerRight: (props) => (
+            <ShopppingcartIcon
+              {...props}
+              onPress={() =>
+                this.props.navigation.navigate('Cart')
+              }></ShopppingcartIcon>
+          ),
+        }}
+        initialRouteName="productlist">
+        <Stack.Screen name="addresslist" component={addresslist} />
+
+        <Stack.Screen name="Cart" component={CartScreen} />
+      </Stack.Navigator>
     );
   }
 }
 const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    marginTop: 20,
+    padding: 20,
+    backgroundColor: '#ffffff',
+    flex: 1,
+  },
   stores: {
     marginTop: 12,
     marginLeft: 8,
   },
-  listItem: {
-    marginTop: 10,
-    backgroundColor: 'gray',
+  text: {
+    textAlign: 'center',
+    fontSize: 18,
   },
 });

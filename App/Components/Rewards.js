@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
-import CustomHeader from '../Components/Shared/CustomHeader';
-
 import {View, Text, StyleSheet, Image} from 'react-native';
-import {ScrollView, TextInput, TouchableOpacity} from 'react-native';
-
+import {ScrollView, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
-
 class Rewards extends Component {
   constructor() {
     super();
@@ -15,7 +11,7 @@ class Rewards extends Component {
   }
   render() {
     return (
-      <ScrollView contentContainerStyle={{flexGrow: 1}}>
+      <ScrollView>
         <View style={styles.container}>
           <Text style={styles.hellotext}>Hello, {this.props.username}</Text>
           <Text style={styles.freetext}>
@@ -26,7 +22,7 @@ class Rewards extends Component {
           </Text>
           <Image
             style={{
-              width: 280,
+              width: 200,
               height: 280,
               alignSelf: 'center',
             }}
@@ -38,42 +34,22 @@ class Rewards extends Component {
               <Text style={styles.txt}>Earn Points</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.rectangle} elevation={5}>
-            <Text
-              style={{
-                textAlign: 'center',
-                fontFamily: 'Roboto-Light',
-                fontWeight: 'bold',
-                fontSize: 20,
-                color: 'steelblue',
-              }}>
-              Your Reward is Expiring Soon!
-            </Text>
+          <View style={styles.rectangle}>
+            <Image
+              style={styles.img}
+              source={require('C:/Users/Jigyasa/test/Images/Rewards1.png')}
+            />
+            <Text style={styles.txt1}>Your Reward is Expiring, Order Now!</Text>
             <Text style={{textAlign: 'center'}}>
               Don't forget to use your rewards! Claim it and enjoy exciting
               discounts.
             </Text>
             <TouchableOpacity style={styles.button1}>
-              <Text style={styles.txt}>Earn Points</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.rectangle1} elevation={5}>
-            <Text
-              style={{
-                textAlign: 'center',
-                fontFamily: 'Roboto-Light',
-                fontWeight: 'bold',
-                fontSize: 20,
-                color: 'steelblue',
-              }}>
-              Your Reward is Expiring Soon!
-            </Text>
-            <Text style={{textAlign: 'center'}}>
-              Don't forget to use your rewards! Claim it and enjoy exciting
-              discounts.
-            </Text>
-            <TouchableOpacity style={styles.button1}>
-              <Text style={styles.txt}>Earn Points</Text>
+              <Text
+                style={styles.txt}
+                onPress={() => this.props.navigation.navigate('Stores')}>
+                Locate Us
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -102,15 +78,19 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ffffff',
     flex: 1,
-    height: 800,
+    height: 900,
   },
   hellotext: {
     fontSize: 35,
     fontFamily: 'SF-UI-Display-Regular',
     textAlign: 'center',
     marginTop: 20,
-
-    /*  color: 'sandybrown', */
+    color: 'steelblue',
+  },
+  img: {
+    width: 230,
+    height: 100,
+    alignSelf: 'center',
   },
 
   freetext: {
@@ -124,7 +104,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: 'steelblue',
     width: 200,
-    height: '24%',
+    height: '22%',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
@@ -132,13 +112,13 @@ const styles = StyleSheet.create({
   },
   button1: {
     backgroundColor: 'steelblue',
-    width: 150,
-    height: '30%',
+    width: 200,
+    height: '20%',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 20,
+    borderRadius: 25,
     alignSelf: 'center',
-    marginTop: 14,
+    marginTop: 28,
   },
 
   txt: {
@@ -147,19 +127,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
   },
-  rectangle: {
-    height: 138,
-
-    top: '60%',
-    right: '4%',
-    left: '4%',
-    position: 'absolute',
-    borderRadius: 30,
-    padding: 20,
+  txt1: {
+    textAlign: 'center',
+    fontFamily: 'Roboto-Light',
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: 'steelblue',
   },
-  rectangle1: {
-    height: 138,
-    top: 640,
+  rectangle: {
+    top: '52%',
     right: '4%',
     left: '4%',
     position: 'absolute',

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Platform, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import {State} from 'react-native-gesture-handler';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {connect} from 'react-redux';
@@ -28,8 +28,6 @@ const ShoppingcartIcon = (props) => (
     </TouchableOpacity>
   </View>
 );
-/*  }
-} */
 
 const mapStateToProps = (State) => {
   return {
